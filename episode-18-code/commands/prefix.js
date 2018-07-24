@@ -3,8 +3,8 @@ const fs = require("fs");
 
 module.exports.run = async (bot, message, args) => {
 
-  if(!message.member.hasPermission("MANAGE_SERVER")) return message.reply("No no no.");
-  if(!args[0] || args[0 == "help"]) return message.reply("Usage: !prefix <desired prefix here>");
+  if(!message.member.hasPermission("MANAGE_SERVER")) return message.reply("Hayır Hayır Hayır.");
+  if(!args[0] || args[0 == "help"]) return message.reply("Kullanımı: t!prefix <Prefix girin>");
 
   let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
 
@@ -18,13 +18,15 @@ module.exports.run = async (bot, message, args) => {
 
   let sEmbed = new Discord.RichEmbed()
   .setColor("#FF9900")
-  .setTitle("Prefix Set!")
-  .setDescription(`Set to ${args[0]}`);
+  .setTitle(":gear:")
+  .setDescription(`:gear:Prefix ${args[0]} ayarlandı!`);
 
   message.channel.send(sEmbed);
 
 }
 
 module.exports.help = {
-  name: "prefix"
+  name: "prefix",
+  description: 'Sunucu için geçerli prefixi gösterir.',
+  usage: 'prefix <Prefix>'
 }
